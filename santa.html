@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Santa Claus with CSS - Special Christmas Experiment</title>
+
+		<!--Stylesheet-->
+		<style type="text/css">
+		* {
+				border: none;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+
+			body {
+				background: #F9F9F9;
+				font: 16px/100% Century Gothic, Arial, Tahoma, Verdana, sans-serif;
+				color: #999;
+				height: 100%;
+			}
+
+			a {
+				color: #1fb3dd;
+				text-decoration: none;
+			}
+
+			a:hover,
+			a:active {
+				color: #888;
+			}
+
+			a:focus {
+				outline: 1px dotted #ccc;
+			}
+
+			h1,h2,h3,h4,h5,h6 {
+				font-family: Tahoma, Arial, Verdana, sans-serif;
+				font-weight: 500;
+				line-height: 170%;
+			}
+
+			*::selection {
+				background: transparent;
+				color: #40d47e;
+			}
+
+			*::-moz-selection {
+				background: transparent;
+				color: #40d47e;
+			}
+
+			.santa {
+				background: #000;
+				width: 300px;
+				height: 150px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.santa .bonnet {
+				background: #e90f0e;
+				border-bottom: 20px solid #ffffff;
+				box-shadow: 0 5px 0 0 rgba(0, 0, 0, .1);
+				width: 100%;
+				height: 30%;
+				position: relative;
+				z-index: 2;
+			}
+
+			.santa .bonnet-body {
+				background: #e90f0e;
+				box-shadow: -5px 5px 0 0 rgba(0, 0, 0, .1);
+				width: 150px;
+				height: 70px;
+				position: absolute;
+				right: -50px;
+				z-index: 5;
+				-webkit-transform: rotate(55deg);
+				-moz-transform: rotate(55deg);
+				-ms-transform: rotate(55deg);
+				transform: rotate(55deg);
+			}
+
+			.santa .tip-of-the-bonnet {
+				background: #ffffff;
+				box-shadow: -3px 3px 0 0 rgba(0, 0, 0, .1);
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				right: -25px;
+				bottom: 10px;
+				z-index: 6;
+			}
+
+			.santa .face {
+				background: #f3c7a2;
+				border: 20px solid #ffffff;
+				width: 100%;
+				height: 100%;
+				margin-top: -40px;
+				position: relative;
+				z-index: 1;
+			}
+
+			.santa .face .cheek {
+				background: #faab8d;
+				border-radius: 50%;
+				width: 50px;
+				height: 30px;
+			}
+
+			.santa .face .cheek.right {
+				margin-right: 20px;
+				float: right;
+			}
+
+			.santa .face .cheek.left {
+				margin-left: 20px;
+				float: left;
+			}
+
+			.santa .face .glasses {
+				width: 100%;
+				height: 50px;
+				margin-top: 20px;
+			}
+
+			.santa .face .glasses .carcass {
+				background: #555555;
+				box-shadow: 0 5px 0 0 rgba(0, 0, 0, .1);
+				width: 100%;
+				height: 5px;
+				margin-top: 30px;
+				display: inline-block;
+				position: relative;
+				z-index: 3;
+			}
+
+			.santa .face .glasses .lens {
+				width: 50%;
+				margin: 0 auto;
+				position: relative;
+				z-index: 4;
+			}
+
+			.santa .face .glasses .len {
+				background: #ffffff;
+				box-shadow: -3px 3px 0 0 rgba(0, 0, 0, .1);
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				margin-top: -30px;
+				display: inline-block;
+			}
+
+			.santa .face .glasses .len.right {
+				float: right;
+			}
+
+			.santa .face .glasses .len.left {
+				float: left;
+			}
+
+			.santa .face .beard {
+				border-width: 100px 130px 20px 130px;
+				border-style: solid;
+				border-color: transparent transparent white transparent;
+				width: 0;
+				height: 0;
+				margin-top: -80px;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Look it...</h1>
+
+			<div class="santa">
+				<div class="bonnet-body"></div>
+				<div class="tip-of-the-bonnet"></div>
+				<div class="bonnet"></div>
+				<div class="face">
+					<div class="glasses">
+						<div class="carcass"></div>
+						<div class="lens">
+							<div class="len right"></div>
+							<div class="len left"></div>
+						</div>
+					</div>
+					<div class="cheek right"></div>
+					<div class="cheek left"></div>
+					<div class="beard"></div>
+				</div>
+			</div>
+
+			<h2>Only a simple and pure CSS code! :)</h2>
+
+			<p>Note: This experiment was based on the illustration of <a href="https://fb.com/andretachibana">Andre Tachibana</a>.</p>
+
+			<!-- Works on Google Chrome, Firefox and IE 9+ -->
+		</center>
+	</body>
+</html>

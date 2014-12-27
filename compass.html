@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Desafio CSS 6 - Bússola com CSS3</title>
+		<!-- CSS challenge 6 - Compass with CSS - Brendo Maciel -->
+
+		<style type="text/css">
+			* {
+				border: none;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+
+			body {
+				background: #F9F9F9;
+				font: 16px/100% Arial, Tahoma, Verdana, sans-serif;
+				font-weight: bold;
+				color: #999;
+				height: 100%;
+			}
+
+
+			h1,h2,h3,h4,h5,h6 {
+				font-family: Tahoma, Arial, Verdana, sans-serif;
+				font-weight: 500;
+				line-height: 170%;
+			}
+
+			*::selection {
+				background: transparent;
+				color: #40d47e;
+			}
+
+			*::-moz-selection {
+				background: transparent;
+				color: #40d47e;
+			}
+
+			.compass {
+				background: #f5f5f5;
+				background: -webkit-linear-gradient(top, #f5f5f5 0%,#ecf0f1 100%);
+				background: -moz-linear-gradient(top, #f5f5f5 0%,#ecf0f1 100%);
+				background: -o-linear-gradient(top, #f5f5f5 0%,#ecf0f1 100%);
+				background: -ms-linear-gradient(top, #f5f5f5 0%,#ecf0f1 100%);
+				background: linear-gradient(top, #f5f5f5 0%,#ecf0f1 100%); /* W3C */
+				border: 20px solid #40d47e;
+				border-radius: 50%;
+				-webkit-box-shadow: 0 2px 0 1px rgba(0, 0, 0, .1), inset 1px 2px 0 2px rgba(0, 0, 0, .1);
+				box-shadow: 0 2px 0 1px rgba(0, 0, 0, .1), inset 1px 2px 0 2px rgba(0, 0, 0, .1);
+				width: 200px;
+				height: 200px;
+				padding: 1px;
+				position: relative;
+				-webkit-transition: all .2s linear;
+				-moz-transition: all .2s linear;
+				-o-transition: all .2s linear;
+				-ms-transition: all .2s linear;
+				transition: all .2s linear;
+			}
+
+			.compass .glass {
+				background: transparent;
+				background: -webkit-repeating-linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 100px, transparent 100px, transparent 200px);
+				background: -moz-repeating-linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 100px, transparent 100px, transparent 200px);
+				background: -o-repeating-linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 100px, transparent 100px, transparent 200px);
+				background: -ms-repeating-linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 100px, transparent 100px, transparent 200px);
+				background: -webkit-repeating-linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 100px, transparent 100px, transparent 200px); /* W3C */
+				border-radius: 50%;
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				top: 0
+				left: 0;
+				z-index: 2;
+				-webkit-transform: rotate(230deg);
+				-moz-transform: rotate(230deg);
+				-o-transform: rotate(230deg);
+				-ms-transform: rotate(230deg);
+				transform: rotate(230deg);
+			}
+
+			.compass .cover {
+				border-radius: 50%;
+				width: 240px;
+				height: 240px;
+				position: absolute;
+				top: -20px;
+				left: -20px;
+				z-index: 3;
+				overflow: hidden;
+				-webkit-transition: all .5s linear;
+				-moz-transition: all .5s linear;
+				-o-transition: all .5s linear;
+				-ms-transition: all .5s linear;
+				transition: all .5s linear;
+				-webkit-transform-origin: bottom center;
+				-moz-transform-origin: bottom center;
+				-o-transform-origin: bottom center;
+				-ms-transform-origin: bottom center;
+				transform-origin: bottom center;
+			}
+
+			.compass .cover .background {
+				background: #40d47e;
+				background: -webkit-repeating-linear-gradient(#2ecc71, #2ecc71 120px, #40d47e 120px, #40d47e 240px);
+				background: -moz-repeating-linear-gradient(#2ecc71, #2ecc71 120px, #40d47e 120px, #40d47e 240px);
+				background: -o-repeating-linear-gradient(#2ecc71, #2ecc71 120px, #40d47e 120px, #40d47e 240px);
+				background: -ms-repeating-linear-gradient(#2ecc71, #2ecc71 120px, #40d47e 120px, #40d47e 240px);
+				background: -webkit-repeating-linear-gradient(#2ecc71, #2ecc71 120px, #40d47e 120px, #40d47e 240px); /* W3C */
+				width: 100%;
+				height: 100%;
+				-webkit-transform: rotate(120deg);
+				-moz-transform: rotate(120deg);
+				-o-transform: rotate(120deg);
+				-ms-transform: rotate(120deg);
+				transform: rotate(120deg);
+			}
+
+			.compass .hinger {
+				background: #27ae60;
+				border-radius: 10px;
+				width: 70px;
+				height: 15px;
+				position: absolute;
+				bottom: -25px;
+				left: 65px;
+				z-index: 1;
+			}
+
+			.compass:hover .cover {
+				-webkit-transform: rotateX(180deg);
+				-moz-transform: rotateX(180deg);
+				-o-transform: rotateX(180deg);
+				-ms-transform: rotateX(180deg);
+				transform: rotateX(180deg);
+			}
+
+			.north {
+				position: absolute;
+				top: 15px;
+				left: 95px;
+			}
+
+			.south {
+				position: absolute;
+				bottom: 15px;
+				left: 95px;
+				-webkit-transform: rotate(180deg);
+				-moz-transform: rotate(180deg);
+				-o-transform: rotate(180deg);
+				-ms-transform: rotate(180deg);
+				transform: rotate(180deg);
+			}
+
+			.east {
+				position: absolute;
+				top: 95px;
+				right: 15px;
+				-webkit-transform: rotate(90deg);
+				-moz-transform: rotate(90deg);
+				-o-transform: rotate(90deg);
+				-ms-transform: rotate(90deg);
+				transform: rotate(90deg);
+			}
+
+			.west {
+				position: absolute;
+				top: 95px;
+				left: 15px;
+				-webkit-transform: rotate(270deg);
+				-moz-transform: rotate(270deg);
+				-o-transform: rotate(270deg);
+				-ms-transform: rotate(270deg);
+				transform: rotate(270deg);
+			}
+
+			.measure {
+				font-size: 9px;
+				color: #CCC;
+			}
+
+			.measure .twenty-measure {
+				-webkit-transform: rotate(20deg);
+				-moz-transform: rotate(20deg);
+				-o-transform: rotate(20deg);
+				-ms-transform: rotate(20deg);
+				transform: rotate(20deg);
+				position: absolute;
+				top: 15px;
+				right: 70px;
+			}
+
+			.measure .fourty-measure {
+				-webkit-transform: rotate(40deg);
+				-moz-transform: rotate(40deg);
+				-o-transform: rotate(40deg);
+				-ms-transform: rotate(40deg);
+				transform: rotate(40deg);
+				position: absolute;
+				top: 30px;
+				right: 45px;
+			}
+
+			.measure .sixty-measure {
+				-webkit-transform: rotate(60deg);
+				-moz-transform: rotate(60deg);
+				-o-transform: rotate(60deg);
+				-ms-transform: rotate(60deg);
+				transform: rotate(60deg);
+				position: absolute;
+				top: 50px;
+				right: 25px;
+			}
+
+			.measure .eighty-measure {
+				-webkit-transform: rotate(80deg);
+				-moz-transform: rotate(80deg);
+				-o-transform: rotate(80deg);
+				-ms-transform: rotate(80deg);
+				transform: rotate(80deg);
+				position: absolute;
+				top: 75px;
+				right: 15px;
+			}
+
+			.measure .one-hundred-measure {
+				-webkit-transform: rotate(100deg);
+				-moz-transform: rotate(100deg);
+				-o-transform: rotate(100deg);
+				-ms-transform: rotate(100deg);
+				transform: rotate(100deg);
+				position: absolute;
+				bottom: 75px;
+				right: 15px;
+			}
+
+			.measure .one-hundred-and-twenty-measure {
+				-webkit-transform: rotate(120deg);
+				-moz-transform: rotate(120deg);
+				-o-transform: rotate(120deg);
+				-ms-transform: rotate(120deg);
+				transform: rotate(120deg);
+				position: absolute;
+				bottom: 50px;
+				right: 25px;
+			}
+
+			.measure .one-hundred-and-fourty-measure {
+				-webkit-transform: rotate(140deg);
+				-moz-transform: rotate(140deg);
+				-o-transform: rotate(140deg);
+				-ms-transform: rotate(140deg);
+				transform: rotate(140deg);
+				position: absolute;
+				bottom: 30px;
+				right: 45px;
+			}
+
+			.measure .one-hundred-and-sixty-measure {
+				-webkit-transform: rotate(160deg);
+				-moz-transform: rotate(160deg);
+				-o-transform: rotate(160deg);
+				-ms-transform: rotate(160deg);
+				transform: rotate(160deg);
+				position: absolute;
+				bottom: 15px;
+				right: 70px;
+			}
+
+			.measure .two-hundred-measure {
+				-webkit-transform: rotate(200deg);
+				-moz-transform: rotate(200deg);
+				-o-transform: rotate(200deg);
+				-ms-transform: rotate(200deg);
+				transform: rotate(200deg);
+				position: absolute;
+				bottom: 15px;
+				left: 70px;
+			}
+
+			.measure .two-hundred-and-twenty-measure {
+				-webkit-transform: rotate(220deg);
+				-moz-transform: rotate(220deg);
+				-o-transform: rotate(220deg);
+				-ms-transform: rotate(220deg);
+				transform: rotate(220deg);
+				position: absolute;
+				bottom: 30px;
+				left: 45px;
+			}
+
+			.measure .two-hundred-and-fourty-measure {
+				-webkit-transform: rotate(240deg);
+				-moz-transform: rotate(240deg);
+				-o-transform: rotate(240deg);
+				-ms-transform: rotate(240deg);
+				transform: rotate(240deg);
+				position: absolute;
+				bottom: 50px;
+				left: 25px;
+			}
+
+			.measure .two-hundred-and-sixty-measure {
+				-webkit-transform: rotate(260deg);
+				-moz-transform: rotate(260deg);
+				-o-transform: rotate(260deg);
+				-ms-transform: rotate(260deg);
+				transform: rotate(260deg);
+				position: absolute;
+				bottom: 75px;
+				left: 15px;
+			}
+
+			.measure .two-hundred-and-eighty-measure {
+				-webkit-transform: rotate(280deg);
+				-moz-transform: rotate(280deg);
+				-o-transform: rotate(280deg);
+				-ms-transform: rotate(280deg);
+				transform: rotate(280deg);
+				position: absolute;
+				top: 75px;
+				left: 15px;
+			}
+
+			.measure .three-hundred-measure {
+				-webkit-transform: rotate(300deg);
+				-moz-transform: rotate(300deg);
+				-o-transform: rotate(300deg);
+				-ms-transform: rotate(300deg);
+				transform: rotate(300deg);
+				position: absolute;
+				top: 50px;
+				left: 25px;
+			}
+
+			.measure .three-hundred-and-twenty-measure {
+				-webkit-transform: rotate(320deg);
+				-moz-transform: rotate(320deg);
+				-o-transform: rotate(320deg);
+				-ms-transform: rotate(320deg);
+				transform: rotate(320deg);
+				position: absolute;
+				top: 30px;
+				left: 45px;
+			}
+
+			.measure .three-hundred-and-fourty-measure {
+				-webkit-transform: rotate(340deg);
+				-moz-transform: rotate(340deg);
+				-o-transform: rotate(340deg);
+				-ms-transform: rotate(340deg);
+				transform: rotate(340deg);
+				position: absolute;
+				top: 15px;
+				left: 70px;
+			}
+
+			@keyframes "animated-pointer" {
+			 0% {
+			    -webkit-transform: rotate(20deg);
+			   	-moz-transform: rotate(20deg);
+			   	-o-transform: rotate(20deg);
+			   	-ms-transform: rotate(20deg);
+			   	transform: rotate(20deg);
+			 }
+			 50% {
+			    -webkit-transform: rotate(-20deg);
+			   	-moz-transform: rotate(-20deg);
+			   	-o-transform: rotate(-20deg);
+			   	-ms-transform: rotate(-20deg);
+			   	transform: rotate(-20deg);
+			 }
+			 100% {
+			    -webkit-transform: rotate(20deg);
+			   	-moz-transform: rotate(20deg);
+			   	-o-transform: rotate(20deg);
+			   	-ms-transform: rotate(20deg);
+			   	transform: rotate(20deg);
+			 }
+
+			}
+
+			@-moz-keyframes animated-pointer {
+			 0% {
+			   -moz-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+			 50% {
+			   -moz-transform: rotate(-20deg);
+			   transform: rotate(-20deg);
+			 }
+			 100% {
+			   -moz-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+
+			}
+
+			@-webkit-keyframes "animated-pointer" {
+			 0% {
+			   -webkit-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+			 50% {
+			   -webkit-transform: rotate(-20deg);
+			   transform: rotate(-20deg);
+			 }
+			 100% {
+			   -webkit-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+
+			}
+
+			@-ms-keyframes "animated-pointer" {
+			 0% {
+			   -ms-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+			 50% {
+			   -ms-transform: rotate(-20deg);
+			   transform: rotate(-20deg);
+			 }
+			 100% {
+			   -ms-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+
+			}
+
+			@-o-keyframes "animated-pointer" {
+			 0% {
+			   -o-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+			 50% {
+			   -o-transform: rotate(-20deg);
+			   transform: rotate(-20deg);
+			 }
+			 100% {
+			   -o-transform: rotate(20deg);
+			   transform: rotate(20deg);
+			 }
+
+			}
+
+			.pointer {
+				margin-top: 30px;
+				position: relative;
+
+				-webkit-animation: animated-pointer 1s ease-in-out infinite;
+				-moz-animation: animated-pointer 1s ease-in-out infinite;
+				-ms-animation: animated-pointer 1s ease-in-out infinite;
+				-o-animation: animated-pointer 1s ease-in-out infinite;
+				animation: animated-pointer 1s ease-in-out infinite;
+				-webkit-transition: all .5s ease-in-out;
+				-moz-transition: all .5s ease-in-out;
+				-o-transition: all .5s ease-in-out;
+				-ms-transition: all .5s ease-in-out;
+				transition: all .5s ease-in-out;
+			}
+
+			.pointer .center {
+				background: #444444;
+				border-radius: 50%;
+				-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .8);
+				box-shadow: 0 0 2px rgba(0, 0, 0, .8);
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				top: 55px;
+				left: 85px;
+			}
+
+			.arrow {
+				border: 70px solid #555555;
+				width: 0;
+				height: 0;
+			}
+
+			.arrow.up {
+				border-color: #e74c3c;
+				border-top: 0px solid transparent;
+				border-left: 15px solid transparent;
+				border-right: 15px solid transparent;
+			}
+
+			.arrow.down {
+				border-bottom: 0 solid transparent;
+				border-left: 15px solid transparent;
+				border-right: 15px solid transparent;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Passe o mouse sobre isso...</h1>
+			<!-- Hover on this... -->
+
+			<div class="compass">
+				<div class="glass"></div>
+				<div class="cover">
+					<div class="background"></div>
+				</div>
+				<div class="hinger"></div>
+
+				<span class="north">N</span>
+				<span class="east">L</span>
+				<span class="south">S</span>
+				<span class="west">O</span>
+
+				<ul class="measure">
+					<li class="twenty-measure">20</li>
+					<li class="fourty-measure">40</li>
+					<li class="sixty-measure">60</li>
+					<li class="eighty-measure">80</li>
+					<li class="one-hundred-measure">100</li>
+					<li class="one-hundred-and-twenty-measure">120</li>
+					<li class="one-hundred-and-fourty-measure">140</li>
+					<li class="one-hundred-and-sixty-measure">160</li>
+					<li class="two-hundred-measure">200</li>
+					<li class="two-hundred-and-twenty-measure">220</li>
+					<li class="two-hundred-and-fourty-measure">240</li>
+					<li class="two-hundred-and-sixty-measure">260</li>
+					<li class="two-hundred-and-eighty-measure">280</li>
+					<li class="three-hundred-measure">300</li>
+					<li class="three-hundred-and-twenty-measure">320</li>
+					<li class="three-hundred-and-fourty-measure">340</li>
+				</ul>
+
+				<div class="pointer">
+					<div class="arrow up"></div>
+					<div class="center"></div>
+					<div class="arrow down"></div>
+				</div>
+			</div>
+
+			<h2>Apenas um simples e puro CSS! :)</h2>
+			<!-- Only a simple and pute CSS code! :)  -->
+		</center>
+	</body>
+</html>
